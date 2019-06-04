@@ -1,0 +1,314 @@
+#: import main thelist
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+<CreateAccountWindow>:
+    name: "create"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'lets.jpg'
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                size_hint: 0.2,0.06
+                pos_hint: {"x":0.2, "top":0.77}
+                text: "Name: "
+                color: 0,0,0,1
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.12
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                size_hint: 0.2,0.06
+                pos_hint: {"x":0.2, "top":0.63}
+                text: "Email: "
+                color: 0,0,0,1
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                size_hint: 0.4, 0.12
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                size_hint: 0.2,0.06
+                pos_hint: {"x":0.2, "top":0.5}
+                text: "Password: "
+                color: 0,0,0,1
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13*2}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Already have an Account? Log In"
+            color: 1,1,1,1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.15
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'lets.jpg'
+    email: email
+    password: passwrd
+    FloatLayout:
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,0.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.2, "top":0.87}
+            color: 0,0,0,1
+            size_hint: 0.15, 0.08
+        TextInput:
+            id: email
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.9}
+            size_hint: 0.4, 0.15
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,0.5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            text:"Password: "
+            color: 0,0,0,1
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.17, "top":0.66}
+            size_hint: 0.22, 0.08
+
+        TextInput:
+            id: passwrd
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.45, "top":0.7}
+            size_hint: 0.4, 0.15
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Don't have an Account? Create One"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+    n: n
+    email: email
+    created:created
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'lets.jpg'
+
+    FloatLayout:
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,0.5
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+            id: n
+            pos_hint:{"x": 0.4, "top":0.98}
+            size_hint:0.2, 0.05
+            color: 0,0,0,1
+            text: ""
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,0.5
+                Rectangle:
+                    size:self.size
+                    pos: self.pos
+            id: email
+            pos_hint:{"x": 0.4, "top":0.91}
+            size_hint:0.23, 0.05
+            color: 0,0,0,1
+            text: ""
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,0.5
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            id: created
+            pos_hint:{"x": 0.4, "top":0.84}
+            size_hint:0.2, 0.05
+            color: 0,0,0,1
+            text: ""
+
+        Button:
+            pos_hint:{"x":0.2, "y": 0.1}
+            size_hint:0.6,0.2
+            text: "Log Out"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+        Button:
+            pos_hint:{"x":0.2, "y": 0.62}
+            size_hint:0.6,0.15
+            text: "todolist"
+            on_release:
+                app.root.current = "todo"
+                root.manager.transition.direction = "down"
+        Button:
+            pos_hint:{"x":0.2, "y": 0.4}
+            size_hint:0.6,0.15
+            text: "Get motivated!"
+            on_release:
+                root.motivated()
+<TodoList>
+    orientation: "vertical"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'lets.jpg'
+    name: "todo"
+    todo_text_input: todoo
+    datum_text_input: datum
+    thelist: thelist
+    padding: 10
+    spacing: 10
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint_y: None
+            height: "40dp"
+            Label:
+                canvas.before:
+                    Color: 
+                        rgba: 1,1,1,0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                text: "Add mission"
+                color: 0,0,0,1
+            TextInput:
+                id: todoo
+                multiline: False
+            Label:
+                canvas.before:
+                    Color: 
+                        rgba: 1,1,1,0.5
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                text: "Add date"
+                color: 0,0,0,1
+            TextInput:
+                id: datum
+                multiline: False
+        BoxLayout:
+            size_hint_y: None
+            height: "40dp"
+            Button:
+                text: "add"
+                size_hint_x: 15
+                on_press:   root.Add_Mission()
+            Button:
+                text: "delete"
+                size_hint_x: 15
+                on_press:   root.Delete_Mission()
+            Button:
+                text: "replace"
+                size_hint_x: 15
+                on_press:   root.Replace_Mission()
+        ListView:
+            id: thelist
+            adapter:    ListAdapter(data=["study"], cls=main.ListItemButton)
+    FloatLayout:
+        Button:
+            text: "Back"
+            size_hint: 0.5, 0.1
+            pos_hint: {"x":0.25, "y": 0.02}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
